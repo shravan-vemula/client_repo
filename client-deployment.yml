@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budget-tracker-client
+  labels:
+    app: budget-tracker-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: budget-tracker-client
+  template:
+    metadata:
+      labels:
+        app: budget-tracker-client
+    spec:
+      containers:
+        - name: budget-tracker-client
+          image: docker.pkg.github.com//zemoso-int/budget-tracker/client-service:sprint-release-3
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
+  

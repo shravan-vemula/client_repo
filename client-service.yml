@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: budget-tracker-client
+  labels:
+    app: budget-tracker-client
+spec:
+  selector:
+    app: budget-tracker-client
+  type: LoadBalancer
+  ports:
+  - name: http-budget-tracker
+    port:8080
+    targetPort: 8080
